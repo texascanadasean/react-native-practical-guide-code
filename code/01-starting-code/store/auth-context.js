@@ -1,10 +1,10 @@
-import { Children, createContext, useState } from 'react';
+import { createContext, useState } from 'react';
 
 export const AuthContext = createContext({
   token: '',
   isAuthenticated: false,
-  authenticate: () => {},
-  logout: () => {}
+  authenticate: (token) => {},
+  logout: () => {},
 });
 
 function AuthContextProvider({ children }) {
@@ -22,7 +22,7 @@ function AuthContextProvider({ children }) {
     token: authToken,
     isAuthenticated: !!authToken,
     authenticate: authenticate,
-    logout: logout
+    logout: logout,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

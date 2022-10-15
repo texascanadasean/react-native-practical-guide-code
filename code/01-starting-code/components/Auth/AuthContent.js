@@ -1,28 +1,25 @@
 import { useState } from 'react';
 import { Alert, StyleSheet, View } from 'react-native';
-import {useNavigation} from '@react-navigation/native'
+import { useNavigation } from '@react-navigation/native';
 
 import FlatButton from '../ui/FlatButton';
 import AuthForm from './AuthForm';
 import { Colors } from '../../constants/styles';
 
 function AuthContent({ isLogin, onAuthenticate }) {
-
   const navigation = useNavigation();
 
   const [credentialsInvalid, setCredentialsInvalid] = useState({
     email: false,
     password: false,
     confirmEmail: false,
-    confirmPassword: false,
+    confirmPassword: false
   });
 
   function switchAuthModeHandler() {
     if (isLogin) {
       navigation.replace('Signup');
-    }
-    else
-    {
+    } else {
       navigation.replace('Login');
     }
   }
@@ -48,7 +45,7 @@ function AuthContent({ isLogin, onAuthenticate }) {
         email: !emailIsValid,
         confirmEmail: !emailIsValid || !emailsAreEqual,
         password: !passwordIsValid,
-        confirmPassword: !passwordIsValid || !passwordsAreEqual,
+        confirmPassword: !passwordIsValid || !passwordsAreEqual
       });
       return;
     }
@@ -84,9 +81,9 @@ const styles = StyleSheet.create({
     shadowColor: 'black',
     shadowOffset: { width: 1, height: 1 },
     shadowOpacity: 0.35,
-    shadowRadius: 4,
+    shadowRadius: 4
   },
   buttons: {
-    marginTop: 8,
-  },
+    marginTop: 8
+  }
 });
